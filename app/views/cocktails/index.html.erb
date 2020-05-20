@@ -2,7 +2,7 @@
 
 <% @cocktails.each do |c| %>
   <p><%= c.name %></p>
-  <p><%= link_to "See more", cocktail_path(@cocktail)  %></p>
+  <p><%= link_to "See more", cocktail_path(c)  %></p>
 <% end %>
 
 <p><%= link_to "Add a cocktail", new_cocktail_path %></p>
