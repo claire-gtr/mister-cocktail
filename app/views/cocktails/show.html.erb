@@ -1,2 +1,30 @@
 <h1><%= @cocktail.name %></h1>
-<%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+<% @cocktail.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
+
+<h4>Voici la recette</h4>
+<ul>
+  <% @cocktail.doses.each do |dose| %>
+    <li>
+      <%= dose.description %>
+      <%= dose.ingredient.name %>
+    </li>
+  <% end %>
+</ul>
+
+
+<%= render 'doses/form', cocktail: @cocktail, dose: @dose %>
+
+<h5>Toutes les reviews</h5>
+
+<% @cocktail.reviews.each do |review| %>
+<%= review.rating %>
+<%= review.description %>
+<% end %>
+
+<h5>Reviews</h5>
+<%= render 'reviews/form', cocktail: @cocktail, review: @review %>
+
+
